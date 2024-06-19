@@ -18,13 +18,13 @@
 
             <div class="list basis-[70%] overflow-hidden overflow-y-auto h-[90%]">
                 <ul class="contacts text-sm">
-                    <li></li>
+                    <li ></li>
                 </ul>
             </div>
         </div>
 
         <div class="basis-[60%] display_info flex items-center justify-center">
-            <p class="text-[#545454] font-bold text-xs">Click item to display </p>
+            <p class="text-[#545454] font-bold text-xs names">Click item to display </p>
         </div>
     </div>
 
@@ -36,8 +36,6 @@
         const listContainer = select(".contacts");
 
         const searchBar = select(".searchbar");
-
-        const info = select(".display_info");
 
         const names = [
         "John Doe",
@@ -90,10 +88,6 @@
         }
     }
     
-    function displayName(value){
-        info.innerHTML = `<div class="bg-white shadow-md p-10">${value}</div>`
-    }
-
     searchBar.oninput = () =>{
         if(searchBar.value !== ""){
             listContainer.innerHTML = "";
@@ -114,6 +108,10 @@
 
     listAll();
     
+
+
+        
+
 
     </script>
     <!-- <script src="check.js"></script> -->
