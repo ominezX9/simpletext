@@ -36,6 +36,7 @@
         const listContainer = select(".contacts");
 
         const searchBar = select(".searchbar");
+        const info = select(".display_info")
 
         const names = [
         "John Doe",
@@ -87,7 +88,10 @@
             listContainer.innerHTML += listItem;
         }
     }
-    
+    function displayName(value){
+        info.innerHTML = `<div class="bg-white shadow-md p-10">${value} </div>`
+        // return myName()
+    }
     searchBar.oninput = () =>{
         if(searchBar.value !== ""){
             listContainer.innerHTML = "";
