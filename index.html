@@ -18,13 +18,13 @@
 
             <div class="list basis-[70%] overflow-hidden overflow-y-auto h-[90%]">
                 <ul class="contacts text-sm">
-                    <li></li>
+                    <li ></li>
                 </ul>
             </div>
         </div>
 
         <div class="basis-[60%] display_info flex items-center justify-center">
-            <p class="text-[#545454] font-bold text-xs">Click item to display </p>
+            <p class="text-[#545454] font-bold text-xs names">Click item to display </p>
         </div>
     </div>
 
@@ -35,6 +35,8 @@
         const listContainer = select(".contacts");
 
         const searchBar = select(".searchbar");
+        
+        const info = select(".display_info");
 
         const names = [
         "John Doe",
@@ -72,7 +74,7 @@
             // listItem.innerHTML = names[i];
             // listContainer.append(listItem);
 
-            var listItem = `<li class="p-2 my-2 hover:bg-[#cde] cursor-pointer flex items-center">
+            var listItem = `<li class="p-2 my-2 hover:bg-[#cde] cursor-pointer flex items-center" onClick="displayName('${searchedList[i]}')">
                 <span class="mr-[5px]">
                     <span class="profile bg-[#dcdcdc] flex font-bold w-[30px] h-[30px] items-center justify-center rounded-full text-xs">
                         ${searchedList[i].split(" ")[0][0] + searchedList[i].split(" ")[1][0]}
@@ -84,6 +86,11 @@
         }
     }
     
+    function displayName(value){
+        info.innerHTML = `<div class="bg-white shadow-md p-10">${value} </div>`
+        // return myName()
+    }
+
     searchBar.oninput = () =>{
         if(searchBar.value !== ""){
             listContainer.innerHTML = "";
@@ -104,11 +111,7 @@
 
     listAll();
     
-
-
-        
-
-
+   
     </script>
 </body>
 </html>
