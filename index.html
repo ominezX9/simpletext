@@ -32,9 +32,12 @@
         function select(val){
             return document.querySelector(val);
         }
+
         const listContainer = select(".contacts");
 
         const searchBar = select(".searchbar");
+
+        const info = select(".display_info");
 
         const names = [
         "John Doe",
@@ -61,10 +64,13 @@
         "Ava Lewis",
         "Brandon Lee",
         "Mia Walker",
-        "Alexander Hall"
+        "Alexander Hall",
+        "Idemudia Esohe",
+        "Agu David"
     ];
 
     let searchedList = names;
+    searchedList.sort();
 
     function listAll(){
         for(i = 0; i < searchedList.length; i++){
@@ -72,7 +78,7 @@
             // listItem.innerHTML = names[i];
             // listContainer.append(listItem);
 
-            var listItem = `<li class="p-2 my-2 hover:bg-[#cde] cursor-pointer flex items-center">
+            var listItem = `<li class="p-2 my-2 hover:bg-[#cde] cursor-pointer flex items-center" onClick="displayName('${searchedList[i]}')">
                 <span class="mr-[5px]">
                     <span class="profile bg-[#dcdcdc] flex font-bold w-[30px] h-[30px] items-center justify-center rounded-full text-xs">
                         ${searchedList[i].split(" ")[0][0] + searchedList[i].split(" ")[1][0]}
@@ -84,6 +90,10 @@
         }
     }
     
+    function displayName(value){
+        info.innerHTML = `<div class="bg-white shadow-md p-10">${value}</div>`
+    }
+
     searchBar.oninput = () =>{
         if(searchBar.value !== ""){
             listContainer.innerHTML = "";
@@ -105,10 +115,7 @@
     listAll();
     
 
-
-        
-
-
     </script>
+    <!-- <script src="check.js"></script> -->
 </body>
 </html>
