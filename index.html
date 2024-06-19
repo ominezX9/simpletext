@@ -32,11 +32,10 @@
         function select(val){
             return document.querySelector(val);
         }
+
         const listContainer = select(".contacts");
 
         const searchBar = select(".searchbar");
-        
-        const info = select(".display_info");
 
         const names = [
         "John Doe",
@@ -63,7 +62,9 @@
         "Ava Lewis",
         "Brandon Lee",
         "Mia Walker",
-        "Alexander Hall"
+        "Alexander Hall",
+        "Idemudia Esohe",
+        "Agu David"
     ];
 
     let searchedList = names;
@@ -87,11 +88,6 @@
         }
     }
     
-    function displayName(value){
-        info.innerHTML = `<div class="bg-white shadow-md p-10">${value} </div>`
-        // return myName()
-    }
-
     searchBar.oninput = () =>{
         if(searchBar.value !== ""){
             listContainer.innerHTML = "";
@@ -112,7 +108,12 @@
 
     listAll();
     
-   
+
+
+        
+
+
     </script>
+    <!-- <script src="check.js"></script> -->
 </body>
 </html>
