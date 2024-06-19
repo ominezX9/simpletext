@@ -3,14 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delivery App</title>
+    <title>Simple Profile Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Delivery App</h1>
-    <!-- add list -->
-    <ul>
-        <li></li>
-        <li></li>
-    </ul>
+<body class="bg-[#dcdcdc]">
+    <div class="app flex flex-row h-[100vh]">
+        <div class="sidebar bg-white basis-[30%] p-5">
+            <h1 class="header text-2xl font-bold text-[#545454]">
+                Contacts
+            </h1>
+            <div class="searchBar mt-[10px]">
+                <input type="search" class="searchbar outline-none border-b-2" placeholder="Search contacts ..." name="" id="">
+            </div>
+
+            <div class="list basis-[70%] overflow-hidden overflow-y-auto h-[90%]">
+                <ul class="contacts text-sm">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="basis-[60%] display_info flex items-center justify-center">
+            <p class="text-[#545454] font-bold text-xs">Click item to display </p>
+        </div>
+    </div>
+
+    <script>
+        function select(val){
+            return document.querySelector(val);
+        }
+        const listContainer = select(".contacts");
+
+        const searchBar = select(".searchbar");
+
+        const names = [
+        "John Doe",
+        "Jane Smith",
+        "Michael Johnson",
+        "Emily Davis",
+        "Christopher Brown",
+        "Amanda Miller",
+        "Joshua Wilson",
+        "Jessica Moore",
+        "Daniel Taylor",
+        "Sarah Anderson",
+        "David Thomas",
+        "Ashley Jackson",
+        "James White",
+        "Megan Harris",
+        "Matthew Martin",
+        "Sophia Thompson",
+        "Andrew Garcia",
+        "Isabella Martinez",
+        "Ryan Robinson",
+        "Olivia Clark",
+        "Tyler Rodriguez",
+        "Ava Lewis",
+        "Brandon Lee",
+        "Mia Walker",
+        "Alexander Hall"
+    ];
+
+    let searchedList = names;
+
+    function listAll(){
+        for(i = 0; i < searchedList.length; i++){
+            // var listItem = document.createElement("li");
+            // listItem.innerHTML = names[i];
+            // listContainer.append(listItem);
+
+            var listItem = `<li class="p-2 my-2 hover:bg-[#cde] cursor-pointer flex items-center">
+                <span class="mr-[5px]">
+                    <span class="profile bg-[#dcdcdc] flex font-bold w-[30px] h-[30px] items-center justify-center rounded-full text-xs">
+                        ${searchedList[i].split(" ")[0][0] + searchedList[i].split(" ")[1][0]}
+                    </span>
+                </span>        
+                <span>${searchedList[i]}</span>
+                </li>`;
+            listContainer.innerHTML += listItem;
+        }
+    }
+    
+    searchBar.oninput = () =>{
+        if(searchBar.value !== ""){
+            listContainer.innerHTML = "";
+            searchedList = names.filter(name => name.toLowerCase().includes(searchBar.value.toLowerCase()));
+            console.log(searchedList, searchBar.value);
+            if(searchedList.length < 1){
+                listContainer.innerHTML = "<p class='p-[30px] text-center bg-[#cdcdcd] mt-2'>Nothing found</p>";
+            }else{
+                listAll();
+            }
+        }else{
+            listContainer.innerHTML = "";
+            searchedList = names;
+            listAll();        
+        }
+        
+    }
+
+    listAll();
+    
+
+
+        
+
+
+    </script>
 </body>
 </html>
